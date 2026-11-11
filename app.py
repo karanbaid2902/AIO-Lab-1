@@ -1,6 +1,6 @@
 """AI Supply Chain Lab - Streamlit dashboard.
 
-Session II lab (AI in Operations):
+AI in Operations - lab activity and exercise:
   * Bullwhip-effect mini-simulation and AI redesign of the network (forecasting, routing)
   * Exercise: AI-enhanced reorder point - ML demand forecasting, dynamic safety stock with
     Monte Carlo, and Bayesian optimisation of the reorder point under constraints.
@@ -96,7 +96,7 @@ def routing_run(policy: str, supply: tuple, penalty: float, cv: float, weeks: in
 # --------------------------------------------------------------------------------------
 with st.sidebar:
     st.title("📦 AI Supply Chain Lab")
-    st.caption("Session II · AI Applications in Reorder Point & Inventory Management")
+    st.caption("AI in Operations · AI Applications in Reorder Point & Inventory Management")
     st.header("⚙️ Simulation environment")
     st.caption("Used by the **Bullwhip** and **AI-Redesigned Network** tabs.")
     weeks = st.slider("Simulation horizon (weeks)", 20, 104, 52, 2)

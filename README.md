@@ -1,6 +1,6 @@
 # 📦 AI Supply Chain Lab — Bullwhip Effect & AI-Enhanced Reorder Point
 
-Interactive Streamlit dashboard for **Session II – AI in Operations** (lab activity + exercise).
+Interactive Streamlit dashboard for **AI in Operations** (lab activity + exercise).
 
 ## What it does
 
