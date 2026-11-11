@@ -15,12 +15,19 @@ import plotly.graph_objects as go
 import streamlit as st
 from plotly.subplots import make_subplots
 
-from supply_chain import bullwhip as bw
-from supply_chain import data as sd
-from supply_chain import forecasting as fc
-from supply_chain import inventory as inv
-from supply_chain import routing as rt
-from supply_chain.optimization import bayesian_optimize
+import sys
+from pathlib import Path
+
+# The engine modules live next to app.py; put this folder first on the import path so
+# they are found on any host (and take priority over any same-named installed package).
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import bullwhip as bw  # noqa: E402
+import data as sd  # noqa: E402
+import forecasting as fc  # noqa: E402
+import inventory as inv  # noqa: E402
+import routing as rt  # noqa: E402
+from optimization import bayesian_optimize  # noqa: E402
 
 st.set_page_config(page_title="AI Supply Chain Lab", page_icon="📦", layout="wide")
 

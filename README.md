@@ -21,16 +21,14 @@ Interactive Streamlit dashboard for **Session II – AI in Operations** (lab act
 ## Project structure
 
 ```
-app.py                     Streamlit dashboard (UI only)
-supply_chain/
-  data.py                  synthetic demand generators, CSV validation
-  bullwhip.py              classic + multi-echelon bullwhip simulation, AI forecaster
-  forecasting.py           ML / LSTM forecasters, walk-forward evaluation, metrics
-  inventory.py             safety stock, Monte Carlo, sensitivity, (s, Q) simulator
-  optimization.py          Gaussian-process Bayesian optimisation (Expected Improvement)
-  routing.py               LP-based order routing / inventory allocation
-requirements.txt
-.streamlit/config.toml
+app.py               Streamlit dashboard (UI)
+data.py              synthetic demand generators, CSV validation
+bullwhip.py          classic + multi-echelon bullwhip simulation, AI forecaster
+forecasting.py       time-series / ML / LSTM forecasters, walk-forward evaluation, metrics
+inventory.py         safety stock, Monte Carlo, sensitivity, (s, Q) simulator
+optimization.py      Gaussian-process Bayesian optimisation (Expected Improvement)
+routing.py           LP-based order routing / inventory allocation
+requirements.txt     Python dependencies
 ```
 
 ## Run locally
