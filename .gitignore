@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+.claude/
+.streamlit/secrets.toml
+*.zip
+.DS_Store
+Thumbs.db

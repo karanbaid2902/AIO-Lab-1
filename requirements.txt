@@ -1,0 +1,12 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+streamlit>=1.50
+numpy>=1.26
+pandas>=2.1
+scipy>=1.11
+scikit-learn>=1.4
+plotly>=5.20
+statsmodels>=0.14
+# CPU-only PyTorch (small enough for Streamlit Community Cloud) - powers the LSTM model.
+# Optional: if a deployment ever fails on torch, delete this line and the first line;
+# the dashboard still works and simply hides the LSTM option.
+torch>=2.2
