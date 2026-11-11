@@ -41,12 +41,17 @@ WARM_HISTORY = 104  # weeks of pre-simulation history used to train / initialise
 
 
 def show(fig: go.Figure, height: int = 380, title: str | None = None):
+    # The title is rendered by Streamlit above the chart (not inside Plotly) so it can never
+    # collide with a legend that wraps onto several rows on narrow screens. The legend sits
+    # above the plot area and Plotly auto-expands the top margin to fit however many rows it needs.
     if title:
-        fig.update_layout(title=dict(text=title, x=0, xanchor="left", y=0.98, yanchor="top", yref="container"))
-    fig.update_layout(height=height, margin=dict(l=10, r=10, t=85 if title else 35, b=10),
+        st.markdown(f"**{title}**")
+    fig.update_layout(height=height, margin=dict(l=10, r=10, t=30, b=10),
                       legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0),
                       hovermode="x unified" if fig.data and fig.data[0].type == "scatter" else None)
-    st.plotly_chart(fig, width="stretch", config={"displaylogo": False})
+    # Plotly's floating toolbar would cover the legend on hover; drag-to-zoom, double-click
+    # reset and tooltips still work without it.
+    st.plotly_chart(fig, width="stretch", config={"displaylogo": False, "displayModeBar": False})
 
 
 def table(df: pd.DataFrame, fmt: dict | None = None):
@@ -521,10 +526,10 @@ with tabs[3]:
                 f1, f2 = st.columns(2)
                 new_date = f1.date_input("Week", (last + pd.DateOffset(weeks=1)).date())
                 new_dem = f2.number_input("Actual demand", 0.0, 1e6, float(round(df["demand"].tail(4).mean())))
-                f3, f4, f5 = st.columns(3)
+                f3, f4 = st.columns(2)
                 new_promo = f3.checkbox("Promotion")
                 new_hol = f4.checkbox("Holiday")
-                new_temp = f5.number_input("Temp °C", -30.0, 50.0,
+                new_temp = st.number_input("Temperature °C", -30.0, 50.0,
                                            float(np.round(sd.climatology(pd.DatetimeIndex([pd.Timestamp(new_date)]))[0], 1)))
                 if st.form_submit_button("➕ Add observation", type="primary"):
                     row = pd.DataFrame([{"date": pd.Timestamp(new_date), "demand": new_dem,
